@@ -1,0 +1,16 @@
+{% extends 'blog/base.html' %}
+
+{% block news_list %}
+
+    {% for i_news in news %}
+        <div class="news">
+            <h2>{{i_news.title}}</h2>
+            <span>{{i_news.published_at}}</span>
+            <span>{{i_news.updated_at}}</span>
+            <p>{{i_news.content}}</p>
+        </div>
+    {% empty %}
+    <h3>Новостей пока нет...</h3>
+    {% endfor %}
+{% endblock %}
+
