@@ -1,0 +1,20 @@
+body{
+    background-color: beige;
+}
+
+header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.links{
+    display:flex;
+    width: 200px;
+    justify-content: space-between;
+}
+
+.container{
+    max-width: 50%;
+    margin: 0 auto;
+}

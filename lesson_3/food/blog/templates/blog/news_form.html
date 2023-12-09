@@ -1,0 +1,11 @@
+{% extends 'blog/base.html' %}
+
+{% block news_form %}
+    <form method="post">
+        {% csrf_token %}
+        {{news_form.as_p}}
+        <button type="submit">Сохранить</button>
+    </form>
+{% endblock %}
+
+
