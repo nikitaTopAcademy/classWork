@@ -27,7 +27,7 @@ class News(models.Model):
     ]
     activity_flag = models.CharField(max_length=1, choices=status_choices,
                                      default='i')
-    # author = models.ForeignKey(Author, verbose_name='автор', on_delete=models.CASCADE)
+    author = models.ForeignKey(Author, verbose_name='автор', on_delete=models.CASCADE)
 
     class Meta:
         db_table = 'news'
@@ -40,9 +40,21 @@ class News(models.Model):
         return f'{self.title}'
 
 
+class Comment(models.Model):
 
+    email = models.EmailField(max_length=50, verbose_name='email')
+    username = models.CharField(max_length=20, verbose_name='логин')
+    comment = models.TextField(verbose_name='комментарий')
+    published_at = models.DateTimeField(auto_now_add=True, verbose_name='дата публикации')
+    news = models.ForeignKey(News, on_delete=models.CASCADE, verbose_name='новость')
 
+    class Meta:
+        db_table = 'comments'
+        verbose_name = 'комментарий'
+        verbose_name_plural = 'комментарии'
 
+    def __str__(self):
+        return f'{self.email}'
 
 
 

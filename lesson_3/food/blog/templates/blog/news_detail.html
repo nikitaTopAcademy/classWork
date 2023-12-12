@@ -1,0 +1,25 @@
+{% extends 'blog/base.html' %}
+
+{% block news_list %}
+
+<div class="news">
+    <h2>{{news.title}}</h2>
+    <span>{{news.author.username}} {{news.published_date}}</span>
+    <h3>Автор: {{news.author.first_name}} {{news.author.last_name}}</h3>
+    <p>{{news.content}}</p>
+
+    <h4>Оставьте обратную связь автору:
+        <a href="mailto:{{news.author.email}}">{{news.author.email}}
+        </a>
+    </h4>
+    <div class="comments">
+        <h3>Оставьте комментарий: </h3>
+        <form method="post">
+            {% csrf_token %}
+            {{comment_form.as_p}}
+            <button type="submit">Отправить</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
